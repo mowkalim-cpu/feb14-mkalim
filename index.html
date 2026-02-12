@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sushiomie Invite</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background-color: pink;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        #buttons {
+            position: relative;
+            width: 420px;   /* wider container */
+            height: 140px;
+        }
+
+        #buttonRow {
+            display: flex;
+            justify-content: center;
+            gap: 80px;      /* WIDER GAP */
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            z-index: 2;
+        }
+
+        #passBtn {
+            background-color: #555;
+            color: white;
+            position: absolute;
+            left: 260px;   /* initial position aligned with gap */
+            top: 0;
+        }
+
+        #message {
+            font-size: 32px;
+            color: #333;
+            display: none;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Sushiomie at Feb 14, 4pm?</h1>
+
+    <div id="buttons">
+        <div id="buttonRow">
+            <button id="yesBtn">G!</button>
+        </div>
+        <button id="passBtn">Pass</button>
+    </div>
+
+    <div id="message">See you there.</div>
+
+    <script>
+        const passBtn = document.getElementById("passBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const buttonsDiv = document.getElementById("buttons");
+        const message = document.getElementById("message");
+
+        passBtn.addEventListener("click", () => {
+            const maxX = buttonsDiv.clientWidth - passBtn.offsetWidth;
+            const maxY = buttonsDiv.clientHeight - passBtn.offsetHeight;
+
+            passBtn.style.left = Math.random() * maxX + "px";
+            passBtn.style.top = Math.random() * maxY + "px";
+        });
+
+        yesBtn.addEventListener("click", () => {
+            buttonsDiv.style.display = "none";
+            message.style.display = "block";
+        });
+    </script>
+
+</body>
+</html>
